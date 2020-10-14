@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Image } from '../models/image';
+import { Image } from '../../shared/models/image';
 import { SearchimagesService } from '../services/searchimages.service';
 import { MatDialog } from '@angular/material/dialog';
 import { AddToFavouritesComponent } from '../add-to-favourites/add-to-favourites.component';

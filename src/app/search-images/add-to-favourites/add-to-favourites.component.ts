@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { FavouriteList } from '../models/favouriteList';
-import { FavouritesService } from '../services/favourites.service';
+import { FavouriteList } from '../../shared/models/favouriteList';
+import { FavouritesService } from '../../shared/services/favourites.service';
 
 @Component({
   selector: 'app-add-to-favourites',
@@ -52,7 +52,7 @@ export class AddToFavouritesComponent implements OnInit {
 
   showNotification(message: string, action: string) {
     this._snackBar.open(message, action, {
-      duration: 2000,
+      duration: 5000,
     });
   }
 

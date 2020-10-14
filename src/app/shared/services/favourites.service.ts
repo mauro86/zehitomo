@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Subject } from 'rxjs';
-import { FavouriteList } from '../models/favouriteList';
-import { Image } from '../models/image';
+import { FavouriteList } from '../../shared/models/favouriteList';
+import { Image } from '../../shared/models/image';
 
 @Injectable({
   providedIn: 'root'
@@ -39,6 +39,26 @@ export class FavouritesService {
     }
 
     return validationResult;
+  }
+
+  updateFavouriteList(newListName : string, newListDescription : string, oldListName : string) {
+
+    const validationResult = this.validateForm(newListName, newListDescription);
+
+    if (validationResult.result) {
+
+      for (let list of this.listOfFavouriteLists) {
+        if (list.name == oldListName) {
+          list.name = newListName;
+          list.description = newListDescription;
+        }
+      }
+
+      this.storeListOfFavouriteLists();
+    }
+
+    return validationResult;
+
   }
 
   storeListOfFavouriteLists() {

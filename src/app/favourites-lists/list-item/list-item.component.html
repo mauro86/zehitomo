@@ -1,0 +1,20 @@
+<ng-container *ngIf=!editMode>
+  <p>{{name}}</p>
+  <p>{{description}}</p>
+  <img class="edit-button" src="assets/images/edit_icon.png" (click)="editMode=true" />
+</ng-container>
+
+<ng-container *ngIf=editMode>
+  <label>Name</label>
+  <input #nameInput type="text" [value]="name">
+  <label>Description</label>
+  <input #descriptionInput type="text" [value]="description">
+  <button mat-flat-button color="primary" (click)="updateListDetails(nameInput.value, descriptionInput.value)">Update</button>
+</ng-container>
+
+<ng-container *ngIf="!images || !images.length">
+  <p>This list is empty :(</p>
+</ng-container>
+<div class="images-grid" *ngIf="images">
+  <app-image class="image" [image]="image" *ngFor="let image of images"></app-image>
+</div>

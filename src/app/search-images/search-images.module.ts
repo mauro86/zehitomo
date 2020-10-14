@@ -4,25 +4,24 @@ import { CommonModule } from '@angular/common';
 import { SearchImagesRoutingModule } from './search-images-routing.module';
 import { SearchComponent } from './search/search.component';
 import { MatInputModule } from '@angular/material/input';
-import { ImageComponent } from './image/image.component';
 import { AddToFavouritesComponent } from './add-to-favourites/add-to-favourites.component';
-import { MatDialogModule } from '@angular/material/dialog';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatButtonModule } from '@angular/material/button';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { RouterModule } from '@angular/router';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
-  declarations: [SearchComponent, ImageComponent, AddToFavouritesComponent],
+  declarations: [SearchComponent, AddToFavouritesComponent],
   imports: [
     CommonModule,
     MatInputModule,
     SearchImagesRoutingModule,
-    MatDialogModule,
     MatRadioModule,
     MatButtonModule,
-    MatSnackBarModule
+    RouterModule,
+    SharedModule
   ],
-  exports: [SearchComponent, ImageComponent]
+  exports: [SearchComponent]
 })
 export class SearchImagesModule { }

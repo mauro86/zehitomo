@@ -1,7 +1,7 @@
 import { Injectable, Input } from '@angular/core';
 import { of } from 'rxjs';
 import Unsplash, { toJson } from "unsplash-js";
-import { Image } from '../models/image';
+import { Image } from '../../shared/models/image';
 
 @Injectable({
   providedIn: 'root'

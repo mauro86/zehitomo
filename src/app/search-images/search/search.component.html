@@ -1,9 +1,9 @@
 <h1>Search Images</h1>
+<a routerLink="../favourite-lists">Check out all your favourite lists</a>
 <input placeholder="Start Typing..." value="" (input)="searchImages($event)" />
 
-<ng-container *ngIf="!images || !images.length">
-  <p>No results found</p>
-</ng-container>
-<div class="images-grid" *ngIf="images">
+<p *ngIf="!images || !images.length">No results found</p>
+
+<div class="images-grid" *ngIf="images && images.length">
   <app-image class="image" (showAddToFavourites)="showAddToFavouritesPanel(image)"  [image]="image" *ngFor="let image of images"></app-image>
 </div>
