@@ -1,0 +1,9 @@
+<h1>Search Images</h1>
+<input placeholder="Start Typing..." value="" (input)="searchImages($event)" />
+
+<ng-container *ngIf="!images || !images.length">
+  <p>No results found</p>
+</ng-container>
+<div class="images-grid" *ngIf="images">
+  <app-image class="image" (showAddToFavourites)="showAddToFavouritesPanel(image)"  [image]="image" *ngFor="let image of images"></app-image>
+</div>

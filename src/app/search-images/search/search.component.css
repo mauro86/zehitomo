@@ -1,0 +1,24 @@
+:host {
+  display: block;
+}
+
+.images-grid {
+  display: grid;
+}
+
+@media (min-width: 768px) {
+  .images-grid {
+    grid-template-columns: repeat(3, auto);
+    grid-gap: 1rem;
+    align-items: center;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+    .images-grid {
+        column-count: 1;
+    }
+    .image {
+      max-width: 100vw;
+    }
+}

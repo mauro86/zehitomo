@@ -1,0 +1,17 @@
+<h3>Favourite Lists</h3>
+<ng-container *ngIf="!listOfFavouriteLists || !listOfFavouriteLists.length">
+  <p>No lists present</p>
+</ng-container>
+<mat-radio-group *ngIf="listOfFavouriteLists && listOfFavouriteLists.length" aria-label="Select an option" (change)="setSelectedFavouriteList($event)">
+  <mat-radio-button class="radio-button" [value]="list.name" *ngFor="let list of listOfFavouriteLists">{{list.name}}</mat-radio-button>
+</mat-radio-group>
+
+<button mat-flat-button color="primary" (click)="addImageToFavouriteList($event);" [disabled]="!selectedFavouriteList ? true : null">Add To Favourite List</button>
+
+<h3>Add New Favourite List</h3>
+
+<form (submit)='addNewFavouriteList($event)'>
+  <input class="input-field" type="text" placeholder="Name" />
+  <input class="input-field" type="text" placeholder="Description" />
+  <button mat-flat-button color="primary" type="submit">Add List</button>
+</form>

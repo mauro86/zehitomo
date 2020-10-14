@@ -1,0 +1,11 @@
+<div class="container">
+  <img
+    class="image"
+    src={{image.url}}
+  />
+  <div class="middle">
+    <div class="text"><a [href]="image.downloadUrl"> Download </a></div>
+    <div class="text" (click)="showFavouritesPanel()"><a> Save to Favourites </a></div>
+    <div class="text"><a [href]="image.uploaderProfile" target="_blank"> Uploader Profile </a></div>
+  </div>
+</div>
