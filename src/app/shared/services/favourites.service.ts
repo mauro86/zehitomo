@@ -48,13 +48,22 @@ export class FavouritesService {
     if (validationResult.result) {
 
       for (let list of this.listOfFavouriteLists) {
+
         if (list.name == oldListName) {
           list.name = newListName;
           list.description = newListDescription;
         }
       }
 
-      this.storeListOfFavouriteLists();
+      try {
+        this.storeListOfFavouriteLists();
+      } catch(error) {
+
+        return {
+          result : false,
+          message : 'Something went wrong. Please check there is enough space in memory.'
+        }
+      }
     }
 
     return validationResult;
@@ -72,6 +81,7 @@ export class FavouritesService {
   validateForm(name : string, description : string) {
 
     if (!name || !description) {
+
       return {
         result : false,
         message : 'Name and Description are required'
@@ -79,7 +89,9 @@ export class FavouritesService {
     }
 
     for (let list of this.listOfFavouriteLists) {
+
       if (list.name == name) {
+
         return {
           result : false,
           message : `List ${name} already exists. Please choose a different name`
@@ -94,10 +106,13 @@ export class FavouritesService {
   }
 
   addImageToFavouriteList(listName : string, image : Image) {
+
     for (let list of this.listOfFavouriteLists) {
+
       if (list.name == listName) {
 
         for (let listImage of list.images) {
+
           if (listImage.id == image.id) {
             return false;
           }
@@ -112,5 +127,3 @@ export class FavouritesService {
 
   }
 }
-
-

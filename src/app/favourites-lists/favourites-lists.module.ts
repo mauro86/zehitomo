@@ -6,6 +6,7 @@ import { FavouriteListsComponent } from './favourite-lists/favourite-lists.compo
 import { ListItemComponent } from './list-item/list-item.component';
 import { SharedModule } from '../shared/shared.module';
 import { MatButtonModule } from '@angular/material/button';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [FavouriteListsComponent, ListItemComponent],
@@ -13,7 +14,8 @@ import { MatButtonModule } from '@angular/material/button';
     CommonModule,
     FavouritesListsRoutingModule,
     SharedModule,
-    MatButtonModule
+    MatButtonModule,
+    RouterModule
   ]
 })
 export class FavouritesListsModule { }

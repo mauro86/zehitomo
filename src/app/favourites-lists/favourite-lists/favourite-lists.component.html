@@ -1,15 +1,21 @@
-<h1>All your favourite images sorted by list</h1>
+<div class="app">
+  <div class="container">
+    <a class="menu-link" routerLink="../search">Home Page</a>
 
-<p *ngIf="!listOfListItems || !listOfListItems.length">There are no favourite lists just yet :(</p>
+    <h1 class="title">Favourites</h1>
 
-<div *ngIf="listOfListItems && listOfListItems.length">
-  <app-list-item
-    [name]="listOfListItem.name"
-    [description]="listOfListItem.description"
-    [images]="listOfListItem.images"
-    (updateListNameAndDescription)="updateListNameAndDescription($event, listOfListItem.name)"
-    *ngFor="let listOfListItem of listOfListItems">
-  </app-list-item>
+    <p class="text" *ngIf="!listOfListItems || !listOfListItems.length">There are no favourite lists just yet :(</p>
+
+    <div *ngIf="listOfListItems && listOfListItems.length">
+
+      <app-list-item
+        [name]="listOfListItem.name"
+        [description]="listOfListItem.description"
+        [images]="listOfListItem.images"
+        (updateListNameAndDescription)="updateListNameAndDescription($event, listOfListItem.name)"
+        *ngFor="let listOfListItem of listOfListItems">
+      </app-list-item>
+
+    </div>
+  </div>
 </div>
-
-

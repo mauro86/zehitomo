@@ -12,6 +12,7 @@ import { AddToFavouritesComponent } from '../add-to-favourites/add-to-favourites
 export class SearchComponent implements OnInit {
 
   images : Image[];
+  searchMode : boolean = true;
 
   constructor(private searchService : SearchimagesService, private dialog: MatDialog) {}
 
@@ -21,7 +22,7 @@ export class SearchComponent implements OnInit {
 
   showAddToFavouritesPanel(image : Image) {
     const dialogRef = this.dialog.open(AddToFavouritesComponent, {
-      width: '50%',
+      width: '500px',
       data : {
         image : image
       }

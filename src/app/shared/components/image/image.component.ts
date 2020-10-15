@@ -9,6 +9,7 @@ import { Image } from '../../models/image';
 export class ImageComponent implements OnInit {
 
   @Input() image : Image;
+  @Input() searchMode : boolean;
   @Output() showAddToFavourites = new EventEmitter<Image>();
 
   constructor() { }
