@@ -64,20 +64,20 @@ The logic and communication with backend and external API has been kept in the s
 
 The choices stated above were made in order to facilitate modularity and scalability for a potential future development and improvement of the application. 
 
-### Lazy loading
+#### Lazy loading
 https://angular.io/guide/lazy-loading-ngmodules
 
 Lazy loading was implemented to improve performances.
 As per documentation linked:
 `By default, NgModules are eagerly loaded, which means that as soon as the app loads, so do all the NgModules, whether or not they are immediately necessary. For large apps with lots of routes, consider lazy loading—a design pattern that loads NgModules as needed. Lazy loading helps keep initial bundle sizes smaller, which in turn helps decrease load times.`
 
-### Error handling
+#### Error handling
 Based on some of the assumptions listed above, a basic error handling has been provided, including feedback to the user based on input validation and lack of memory space.
 
-### Test coverage
+#### Test coverage
 Unit Tests have been written for some of the service methods.
 
-### Legacy browser compatibility
+#### Legacy browser compatibility
 https://angular.io/guide/browser-support
 
 Angular supports most recent browsers. In order to support older versions, it allows to load polyfill scripts for the required browsers.
