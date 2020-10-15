@@ -21,6 +21,13 @@ export class AddToFavouritesComponent implements OnInit {
     private _snackBar: MatSnackBar
   ) {}
 
+  /**
+   * Given an event object containing the values of the submitted list form (name, description),
+   * validates and stores a new favourite list utilising the favourites service method `addFavouriteList`.
+   *
+   * @param event : any
+   * @return void
+   */
   addNewFavouriteList(event : any) {
     event.preventDefault();
 
@@ -32,7 +39,14 @@ export class AddToFavouritesComponent implements OnInit {
     this.selectedFavouriteList = event.value;
   }
 
-  addImageToFavouriteList(event) {
+  /**
+   * Triggered on clicking `Add to Favourites` button, this method stores the selected image object within
+   * the selected favourite list.
+   *
+   * @param event : any
+   * @return void
+   */
+  addImageToFavouriteList(event : any) {
     const addImageResult = this.favourites.addImageToFavouriteList(this.selectedFavouriteList, this.data.image);
     let notificationText = '';
 

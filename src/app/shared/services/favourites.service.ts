@@ -14,6 +14,12 @@ export class FavouritesService {
     this.initListOfFavouriteLists();
   }
 
+  /**
+   * Initialises the listOfFavouriteLists attribute with the value retrieved from the
+   * local storage.
+   *
+   * @returns void
+   */
   initListOfFavouriteLists() {
     this.listOfFavouriteLists = JSON.parse(localStorage.getItem('listOfFavouriteLists'));
 
@@ -22,6 +28,14 @@ export class FavouritesService {
     }
   }
 
+  /**
+   * Given a name and a description, it validates them and, if successful,
+   * stores a new FavouriteList in the local storage.
+   *
+   * @param name : string
+   * @param description : string
+   * @returns ValidationResponse
+   */
   addFavouriteList(name : string, description : string) : ValidationResponse {
 
     const validationResult = this.validateAddListForm(name, description);
@@ -41,6 +55,16 @@ export class FavouritesService {
     return validationResult;
   }
 
+  /**
+   * Given the old list name, a new name, a new description, finds the existing list by old name,
+   * and updates the list with its new name and description, given successful validation of those
+   * fields.
+   *
+   * @param newListName : string
+   * @param newListDescription : string
+   * @param oldListName : string
+   * @returns ValidationResponseS
+   */
   updateFavouriteList(newListName : string, newListDescription : string, oldListName : string) : ValidationResponse {
 
     const validationResult = this.validateUpdateListForm(newListName, newListDescription, oldListName);
@@ -149,6 +173,14 @@ export class FavouritesService {
     return result;
   }
 
+  /**
+   * Given a list name and an image, adds the image to the corresponding list,
+   * given that the list exists in memory.
+   *
+   * @param listName : string
+   * @param image : string
+   * @returns boolean
+   */
   addImageToFavouriteList(listName : string, image : Image) {
 
     for (let list of this.listOfFavouriteLists) {

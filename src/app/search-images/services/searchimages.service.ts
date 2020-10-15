@@ -10,6 +10,14 @@ export class SearchimagesService {
 
   constructor() { }
 
+  /**
+   * Utilises Unsplash API to fetch an array of objects filtered by the
+   * searchQuery param, and maps the Unsplash response objects in an array
+   * of Image objects.
+   *
+   * @param searchQuery : string
+   * @returns Promise<Image[]>
+   */
   async searchImages(searchQuery : string) : Promise<Image[]> {
 
     const unsplash = new Unsplash({
