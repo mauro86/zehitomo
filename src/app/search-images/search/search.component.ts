@@ -16,6 +16,13 @@ export class SearchComponent {
 
   constructor(private searchService : SearchimagesService,  private dialog: MatDialog) {}
 
+  /**
+   * Given an array object, uses the searchService method `searchImages` to fetch an array of images
+   * filtered by the inputted keyword.
+   *
+   * @param event
+   * @returns Promise<void>
+   */
   async searchImages(event : any) {
     this.images = await this.searchService.searchImages(event.target.value);
   }
