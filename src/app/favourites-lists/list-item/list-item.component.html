@@ -1,0 +1,24 @@
+<ng-container *ngIf=!editMode>
+  <p class="label-details-favourite-list"><span class="label-favourite-list">Name: </span> {{name}}</p>
+  <p class="label-details-favourite-list"><span class="label-favourite-list">Description: </span> {{description}}</p>
+  <button mat-flat-button color="primary" (click)="editMode=true">Edit</button>
+</ng-container>
+
+<ng-container *ngIf=editMode>
+  <label class="text">Name</label>
+  <input class="input-small" #nameInput type="text" [value]="name">
+  <label class="text">Description</label>
+  <input class="input-small" #descriptionInput type="text" [value]="description">
+  <button mat-flat-button class="submit-button" color="primary" (click)="updateListDetails(nameInput.value, descriptionInput.value)">Update</button>
+  <button mat-flat-button color="basic" (click)="editMode=false">Cancel</button>
+</ng-container>
+
+<ng-container *ngIf="!images || !images.length">
+  <p class="text">This list is empty :(</p>
+</ng-container>
+
+<main class="gallery" *ngIf="images && images.length">
+  <div class="gallery__list">
+      <app-image *ngFor="let image of images" class="image" [image]="image"></app-image>
+  </div>
+</main>

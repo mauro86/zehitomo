@@ -1,0 +1,13 @@
+<div class="container">
+  <img
+    class="image"
+    src={{image?.url}}
+  />
+  <div class="middle">
+    <a class="menu-link" [href]="image?.downloadUrl"> Download </a>
+    <ng-container *ngIf="searchMode">
+      <a class="menu-link" (click)="showFavouritesPanel()"> Save </a>
+      <a class="menu-link" [href]="image?.uploaderProfile" target="_blank"> {{image?.uploaderUsername}} </a>
+    </ng-container>
+  </div>
+</div>

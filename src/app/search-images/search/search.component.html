@@ -1,0 +1,15 @@
+<div class="app">
+  <div class="container">
+    <a class="menu-link" routerLink="../favourite-lists">Favourites</a>
+    <h1 class="title">Search Images</h1>
+    <input class="input" placeholder="Start typing..." value="" (input)="searchImages($event)" />
+
+    <p class="text" *ngIf="images && !images.length">No results found</p>
+
+    <main class="gallery" *ngIf="images && images.length">
+      <div class="gallery__list">
+          <app-image *ngFor="let image of images" (showAddToFavourites)="showAddToFavouritesPanel(image)" [searchMode]="searchMode"  [image]="image"></app-image>
+      </div>
+    </main>
+  </div>
+</div>
