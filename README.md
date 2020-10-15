@@ -6,7 +6,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 # Set Up
 - `git clone https://github.com/mauro86/zehitomo.git`
 - `cd zehitomo`
-- Store your Unsplash API Auth Key within the attribute `environment.unsplashAuthKey` in `./environments.environment.ts`
+- IMPORTANT! Store your Unsplash API Auth Key within the attribute `environment.unsplashAuthKey` in `./environments.environment.ts`
 - `npm install`
 - `npm run start`
 - Navigate to `http://localhost:4200/`
