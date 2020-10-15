@@ -71,9 +71,6 @@ Lazy loading was implemented to improve performances.
 As per documentation linked:
 `By default, NgModules are eagerly loaded, which means that as soon as the app loads, so do all the NgModules, whether or not they are immediately necessary. For large apps with lots of routes, consider lazy loading—a design pattern that loads NgModules as needed. Lazy loading helps keep initial bundle sizes smaller, which in turn helps decrease load times.`
 
-### Accessibility
-
-
 ### Error handling
 Based on some of the assumptions listed above, a basic error handling has been provided, including feedback to the user based on input validation and lack of memory space.
 
@@ -86,7 +83,9 @@ https://angular.io/guide/browser-support
 Angular supports most recent browsers. In order to support older versions, it allows to load polyfill scripts for the required browsers.
 
 ## Asymptotic analysis
+The most costly methods implemented in the project are the ones utilised in the services.
 
+Among them the the most costly have a linear space and time cost O(n).
 
 ## TODO Improvements
 - Increase code coverage which at the moment doesn't cover all methods and scenarios.
@@ -97,4 +96,6 @@ Angular supports most recent browsers. In order to support older versions, it al
 - Additional features to make the application more attractive, a few examples:
   - Allowing the app to load more images as the user scrolls down
   - Enable the user to share her favourite lists
-- Accessibility
+- Improve Accessibility implementing steps such as:
+  - improving keyboard nagivation
+  - testing the UI styles for visually impaired people
