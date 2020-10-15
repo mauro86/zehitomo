@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FavouritesService } from 'src/app/shared/services/favourites.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
@@ -7,17 +7,24 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   templateUrl: './favourite-lists.component.html',
   styleUrls: ['./favourite-lists.component.css']
 })
-export class FavouriteListsComponent implements OnInit {
+export class FavouriteListsComponent {
 
   constructor(
     private favourites : FavouritesService,
-    private _snackBar: MatSnackBar
+    private snackBar: MatSnackBar
   ) { }
 
   get listOfListItems() {
     return this.favourites.getListOfFavouriteLists();
   }
 
+  /**
+   * Updates an existing favourite list with the provided new name and description.
+   *
+   * @param event : any
+   * @param oldListName : string
+   * @returns void
+   */
   updateListNameAndDescription(event : any, oldListName : string) {
     const newListName = event.name;
     const newListDescription = event.description;
@@ -27,12 +34,8 @@ export class FavouriteListsComponent implements OnInit {
   }
 
   showNotification(message: string, action: string) {
-    this._snackBar.open(message, action, {
+    this.snackBar.open(message, action, {
       duration: 5000,
     });
   }
-
-  ngOnInit(): void {
-  }
-
 }

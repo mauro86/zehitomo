@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Image } from 'src/app/shared/models/image';
 
 @Component({
@@ -6,7 +6,7 @@ import { Image } from 'src/app/shared/models/image';
   templateUrl: './list-item.component.html',
   styleUrls: ['./list-item.component.css']
 })
-export class ListItemComponent implements OnInit {
+export class ListItemComponent {
 
   @Input()
   name : string;
@@ -25,12 +25,15 @@ export class ListItemComponent implements OnInit {
 
   constructor() { }
 
+  /**
+   * Emits an updateListNameAndDescription event
+   *
+   * @param name : string
+   * @param description : string
+   * @returns void
+   */
   updateListDetails(name : string, description : string) {
-    this.updateListNameAndDescription.next({name, description});
+    this.updateListNameAndDescription.emit({name, description});
     this.editMode = false;
   }
-
-  ngOnInit(): void {
-  }
-
 }

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, Optional } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { FavouriteList } from '../../shared/models/favouriteList';
@@ -14,11 +14,12 @@ export class AddToFavouritesComponent implements OnInit {
   listOfFavouriteLists : Array<FavouriteList>;
   selectedFavouriteList : string;
 
-  constructor(private favourites : FavouritesService,
-    @Inject(MAT_DIALOG_DATA) public data: any,
-    public dialogRef: MatDialogRef<AddToFavouritesComponent>,
+  constructor(
+    private favourites : FavouritesService,
+    @Optional() @Inject(MAT_DIALOG_DATA) public data: any,
+    @Optional() public dialogRef: MatDialogRef<AddToFavouritesComponent>,
     private _snackBar: MatSnackBar
-    ) {}
+  ) {}
 
   addNewFavouriteList(event : any) {
     event.preventDefault();

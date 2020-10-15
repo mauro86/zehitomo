@@ -6,7 +6,7 @@ import { Image } from '../../models/image';
   templateUrl: './image.component.html',
   styleUrls: ['./image.component.css']
 })
-export class ImageComponent implements OnInit {
+export class ImageComponent {
 
   @Input() image : Image;
   @Input() searchMode : boolean;
@@ -17,8 +17,4 @@ export class ImageComponent implements OnInit {
   showFavouritesPanel() {
     this.showAddToFavourites.emit(this.image);
   }
-
-  ngOnInit(): void {
-  }
-
 }

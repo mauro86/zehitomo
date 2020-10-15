@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Subject } from 'rxjs';
 import { FavouriteList } from '../../shared/models/favouriteList';
 import { Image } from '../../shared/models/image';
+import { ValidationResponse } from '../models/validationResponse';
 
 @Injectable({
   providedIn: 'root'
@@ -22,9 +22,9 @@ export class FavouritesService {
     }
   }
 
-  addFavouriteList(name : string, description : string) {
+  addFavouriteList(name : string, description : string) : ValidationResponse {
 
-    const validationResult = this.validateForm(name, description);
+    const validationResult = this.validateAddListForm(name, description);
 
     if (validationResult.result) {
 
@@ -41,9 +41,9 @@ export class FavouritesService {
     return validationResult;
   }
 
-  updateFavouriteList(newListName : string, newListDescription : string, oldListName : string) {
+  updateFavouriteList(newListName : string, newListDescription : string, oldListName : string) : ValidationResponse {
 
-    const validationResult = this.validateForm(newListName, newListDescription);
+    const validationResult = this.validateUpdateListForm(newListName, newListDescription, oldListName);
 
     if (validationResult.result) {
 
@@ -52,6 +52,7 @@ export class FavouritesService {
         if (list.name == oldListName) {
           list.name = newListName;
           list.description = newListDescription;
+          validationResult.list = list;
         }
       }
 
@@ -74,35 +75,78 @@ export class FavouritesService {
     localStorage.setItem('listOfFavouriteLists', JSON.stringify(this.listOfFavouriteLists));
   }
 
+  clearListOfFavouriteLists() {
+    localStorage.removeItem('listOfFavouriteLists');
+  }
+
   getListOfFavouriteLists() {
     return this.listOfFavouriteLists;
   }
 
-  validateForm(name : string, description : string) {
+  validateAddListForm(name : string, description : string) : ValidationResponse {
+
+    let result = {
+      result : false,
+      message : '',
+      list : null
+    }
 
     if (!name || !description) {
 
-      return {
-        result : false,
-        message : 'Name and Description are required'
-      };
+      result.result = false;
+      result.message = 'Name and Description are required';
+
+      return result;
     }
 
     for (let list of this.listOfFavouriteLists) {
 
       if (list.name == name) {
 
-        return {
-          result : false,
-          message : `List ${name} already exists. Please choose a different name`
-        };
+        result.result = false;
+        result.message = `List ${name} already exists. Please choose a different name`;
+
+        return result;
       }
     }
 
-    return {
-      result : true,
-      message : `List ${name} has been added successfully`
-    };
+    result.result = true,
+    result.message = `List ${name} has been added successfully`
+
+    return result;
+  }
+
+  validateUpdateListForm(name : string, description : string, oldName : string) : ValidationResponse {
+
+    let result = {
+      result : false,
+      message : '',
+      list : null
+    }
+
+    if (!name || !description) {
+
+      result.result = false;
+      result.message = 'Name and Description are required';
+
+      return result;
+    }
+
+    for (let list of this.listOfFavouriteLists) {
+
+      if (list.name == name && name != oldName) {
+
+        result.result = false;
+        result.message = `List ${name} already exists. Please choose a different name`;
+
+        return result;
+      }
+    }
+
+    result.result = true;
+    result.message = `List ${name} has been updated successfully`;
+
+    return result;
   }
 
   addImageToFavouriteList(listName : string, image : Image) {

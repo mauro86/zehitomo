@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { FavouriteListsComponent } from './favourite-lists/favourite-lists.component';
 
 const routes: Routes = [{
-  path : 'favourite-lists',
+  path : '',
   component : FavouriteListsComponent
 }];
 

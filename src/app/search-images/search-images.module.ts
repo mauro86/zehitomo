@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { SearchImagesRoutingModule } from './search-images-routing.module';
 import { SearchComponent } from './search/search.component';
 import { MatInputModule } from '@angular/material/input';
@@ -12,7 +11,10 @@ import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
-  declarations: [SearchComponent, AddToFavouritesComponent],
+  declarations: [
+    SearchComponent,
+    AddToFavouritesComponent
+  ],
   imports: [
     CommonModule,
     MatInputModule,

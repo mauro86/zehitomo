@@ -1,5 +1,4 @@
-import { Injectable, Input } from '@angular/core';
-import { of } from 'rxjs';
+import { Injectable } from '@angular/core';
 import Unsplash, { toJson } from "unsplash-js";
 import { Image } from '../../shared/models/image';
 import { environment } from '../../../environments/environment';
@@ -18,11 +17,11 @@ export class SearchimagesService {
     });
 
     const foundImages = await unsplash.search
-        .photos(searchQuery)
-        .then(toJson)
-        .then((json) => {
-              return (json.results);
-          });
+      .photos(searchQuery)
+      .then(toJson)
+      .then(json => {
+        return json.results;
+      });
 
     return this.mapImages(foundImages);
   }

@@ -8,7 +8,7 @@
 
     <main class="gallery" *ngIf="images && images.length">
       <div class="gallery__list">
-            <app-image *ngFor="let image of images" (showAddToFavourites)="showAddToFavouritesPanel(image)" [searchMode]="searchMode"  [image]="image"></app-image>
+          <app-image *ngFor="let image of images" (showAddToFavourites)="showAddToFavouritesPanel(image)" [searchMode]="searchMode"  [image]="image"></app-image>
       </div>
     </main>
   </div>

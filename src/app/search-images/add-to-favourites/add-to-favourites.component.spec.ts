@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { AddToFavouritesComponent } from './add-to-favourites.component';
 
@@ -8,7 +10,8 @@ describe('AddToFavouritesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AddToFavouritesComponent ]
+      declarations: [ AddToFavouritesComponent ],
+      imports: [MatSnackBarModule, MatDialogModule]
     })
     .compileComponents();
   });
