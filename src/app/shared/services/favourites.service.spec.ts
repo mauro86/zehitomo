@@ -14,17 +14,6 @@ describe('FavouritesService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('given valid inputs, a new favourite list should be created.', () => {
-
-    const name = 'Zehitomo';
-    const description = "Zehitomo's favourite list";
-
-    service.clearListOfFavouriteLists();
-    const result = service.addFavouriteList(name, description);
-
-    expect(result.result).toBeTrue();
-  });
-
   it('given empty inputs, an attempt to create a new favourite list should fail.', () => {
     const name = '';
     const description = "";
